@@ -1,12 +1,30 @@
-/* =========================================
-   EVILNEST - SUPER VILLAIN LAIR RENTALS
-   External CSS Stylesheet
-   Theme: Dark Purple and Black
-========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cinzel+Decorative:wght@400;700;900&family=Montserrat:wght@400;500;600;700&display=swap');
 
 
-/* 1. GLOBAL SETTINGS */
+/* COLOURS */
+:root {
+    --bg-main: #100b16;
+    --bg-dark: #0b0810;
+    --bg-section: #171020;
+    --bg-card: #21172c;
 
+    --purple: #8739c9;
+    --purple-light: #c18af0;
+    --purple-dark: #54217f;
+
+    --gold: #c5a66a;
+    --gold-light: #e2c994;
+
+    --white: #f8f4fc;
+    --text: #c9bfd2;
+    --muted: #9689a2;
+
+    --border: rgba(193, 138, 240, 0.22);
+    --radius: 12px;
+}
+
+
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -18,303 +36,569 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: #0b0713;
-    color: #ffffff;
+    min-height: 100vh;
+    background: var(--bg-main);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
     line-height: 1.7;
 }
 
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+
+/* GENERAL TYPOGRAPHY */
+h1,
+h2,
+h3 {
+    font-family: 'Cinzel', serif;
+    line-height: 1.35;
+}
+
+h1 {
+    font-family: 'Cinzel Decorative', serif;
+    color: var(--white);
+    font-weight: 700;
+}
+
+h2 {
+    color: var(--purple-light);
+    font-size: 28px;
+}
+
+h3 {
+    color: var(--gold-light);
+    font-size: 17px;
+}
+
+p {
+    color: var(--text);
+}
+
 .container {
-    width: 90%;
-    max-width: 1200px;
+    width: min(1120px, calc(100% - 48px));
     margin: 0 auto;
 }
 
+.subtitle {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
 
-/* 2. WEBSITE HEADER */
 
+/* HEADER AND NAVIGATION */
 .site-header {
-    background-color: #120b20;
-    padding: 20px 0;
-    border-bottom: 1px solid #392052;
     position: sticky;
     top: 0;
     z-index: 1000;
+    background: rgba(11, 8, 16, 0.97);
+    border-bottom: 1px solid var(--border);
 }
 
 .site-header .container {
+    min-height: 76px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
+    justify-content: space-between;
+    gap: 30px;
 }
 
-
-/* WEBSITE LOGO */
-
 .logo {
-    font-size: 28px;
-    font-weight: 800;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 25px;
+    font-weight: 900;
     letter-spacing: 2px;
-    color: #ffffff;
+    color: var(--white);
 }
 
 .logo span {
-    color: #a855f7;
+    color: var(--purple-light);
 }
-
-
-/* NAVIGATION MENU */
 
 .navbar {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 32px;
 }
 
 .navbar a {
-    color: #d6c9e8;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 600;
-    transition: 0.3s ease;
+    position: relative;
+    padding: 10px 0;
+    color: var(--text);
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 700;
+    transition: 0.25s ease;
 }
 
 .navbar a:hover,
 .navbar a.active {
-    color: #c084fc;
+    color: var(--gold-light);
+}
+
+.navbar a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: 0.25s ease;
+}
+
+.navbar a:hover::after,
+.navbar a.active::after {
+    width: 100%;
 }
 
 
-/* 3. HERO SECTION */
-
+/* FOUNDER PAGE HERO */
 .hero {
-    padding: 100px 0;
+    padding: 85px 0;
     background:
-        radial-gradient(
-            circle at top right,
-            #351653,
-            #160d24 45%,
-            #0b0713 80%
-        );
+        linear-gradient(110deg, #21122f 0%, #130c1c 60%, #100b16 100%);
+    border-bottom: 1px solid var(--border);
 }
 
 .hero-content {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
     align-items: center;
-    gap: 60px;
+    gap: 65px;
 }
 
 .hero-text {
-    flex: 1;
-}
-
-.subtitle {
-    color: #c084fc;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    margin-bottom: 15px;
+    text-align: left;
 }
 
 .hero-text h1 {
-    font-size: 48px;
-    line-height: 1.2;
-    margin-bottom: 25px;
-    color: #ffffff;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.25;
+    margin-bottom: 22px;
 }
 
 .hero-text h1 span {
     display: block;
-    color: #a855f7;
+    color: var(--purple-light);
 }
 
 .hero-description {
-    color: #c4b5d4;
-    font-size: 16px;
-    margin-bottom: 35px;
-    max-width: 550px;
+    max-width: 540px;
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 28px;
 }
 
-
-/* HERO IMAGE */
-
 .hero-image {
-    flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .hero-image img {
     width: 100%;
-    max-width: 420px;
-    height: 420px;
+    max-width: 390px;
+    height: 460px;
     object-fit: cover;
-    border-radius: 25px;
-    border: 2px solid #9333ea;
-    box-shadow: 0 0 35px rgba(168, 85, 247, 0.3);
+    object-position: center 35%;
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    box-shadow: 15px 15px 0 rgba(135, 57, 201, 0.13);
 }
 
 
-/* 4. BUTTON DESIGN */
+/* BUTTONS */
+.btn-primary,
+.btn-secondary {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 46px;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
 
 .btn-primary {
-    display: inline-block;
-    background: linear-gradient(
-        135deg,
-        #9333ea,
-        #6b21a8
-    );
-    color: #ffffff;
-    padding: 14px 28px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 700;
-    transition: 0.3s ease;
-    box-shadow: 0 5px 20px rgba(147, 51, 234, 0.25);
+    background: var(--purple);
+    color: white;
+    border: 1px solid var(--purple);
 }
 
 .btn-primary:hover {
-    background: linear-gradient(
-        135deg,
-        #a855f7,
-        #7e22ce
-    );
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(168, 85, 247, 0.4);
+    background: var(--purple-dark);
+    border-color: var(--purple-light);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--gold-light);
+    border: 1px solid var(--gold);
+}
+
+.btn-secondary:hover {
+    background: rgba(197, 166, 106, 0.12);
+    transform: translateY(-2px);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--gold-light);
+    outline-offset: 3px;
 }
 
 
-/* 5. FOUNDER SECTION */
-
+/* FOUNDER PROFILE SECTION */
 .founder-section {
-    padding: 90px 0;
-    text-align: center;
-    background-color: #100a1a;
+    padding: 75px 0;
 }
 
-.founder-section h2,
-.business-section h2 {
-    font-size: 34px;
-    margin-bottom: 10px;
-    color: #ffffff;
+.founder-section > .container {
+    max-width: 1000px;
+}
+
+.founder-section > .container > h2,
+.founder-section > .container > .subtitle,
+.founder-section > .container > .section-description {
+    text-align: center;
 }
 
 .section-description {
-    color: #a99bb9;
-    margin-bottom: 40px;
+    margin-top: 8px;
+    margin-bottom: 30px;
 }
 
 .founder-card {
-    max-width: 750px;
-    margin: 0 auto;
-    padding: 40px;
-    background-color: #1b1029;
-    border: 1px solid #4c2670;
-    border-radius: 18px;
-    text-align: left;
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
-    transition: 0.3s ease;
-}
-
-.founder-card:hover {
-    border-color: #a855f7;
-    transform: translateY(-5px);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 35px 40px;
+    border-left: 4px solid var(--gold);
 }
 
 .founder-card h3 {
-    font-size: 25px;
-    color: #d8b4fe;
-    margin-bottom: 5px;
+    font-size: 23px;
+    margin-bottom: 3px;
 }
 
 .founder-role {
-    color: #a855f7;
-    font-weight: 600;
-    margin-bottom: 25px;
+    color: var(--gold);
+    font-size: 13px;
+    margin-bottom: 22px;
 }
 
 .profile-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
     padding: 20px;
-    background-color: #120b20;
-    border-radius: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 22px;
+    background: rgba(11, 8, 16, 0.55);
+    border: 1px solid var(--border);
+    border-radius: 8px;
 }
 
 .profile-details p {
-    margin-bottom: 10px;
-    color: #d1c5df;
-}
-
-.profile-details p:last-child {
-    margin-bottom: 0;
+    font-size: 14px;
 }
 
 .profile-details strong {
-    color: #c084fc;
+    color: var(--gold-light);
 }
 
 .founder-description {
-    color: #c4b5d4;
-    text-align: justify;
+    font-size: 14px;
+    line-height: 1.9;
 }
 
 
-/* 6. BUSINESS INTRODUCTION */
-
+/* BUSINESS INTRODUCTION */
 .business-section {
-    padding: 90px 0;
+    padding: 70px 0;
+    background: var(--bg-section);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.business-section .container {
+    max-width: 850px;
     text-align: center;
-    background:
-        linear-gradient(
-            180deg,
-            #160d24,
-            #0b0713
-        );
 }
 
-.business-section p:last-child {
-    max-width: 800px;
-    margin: 25px auto 0;
-    color: #c4b5d4;
-    font-size: 16px;
+.business-section h2 {
+    margin-bottom: 18px;
+}
+
+.business-section .container > p:last-child {
+    font-size: 15px;
+    line-height: 2;
 }
 
 
-/* 7. WEBSITE FOOTER */
+/* RESOURCE PLANNER HERO */
+.kiosk-hero {
+    padding: 55px 0;
+    text-align: center;
+    background: linear-gradient(110deg, #21122f, #130c1c 65%, #100b16);
+    border-bottom: 1px solid var(--border);
+}
 
+.kiosk-hero h1 {
+    font-size: clamp(30px, 4vw, 42px);
+    margin-bottom: 12px;
+}
+
+.kiosk-hero .container > p:last-child {
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: 14px;
+}
+
+
+/* PLANNER SECTION */
+.planner-section {
+    padding: 65px 0 80px;
+}
+
+.planner-card {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 40px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.planner-heading {
+    text-align: center;
+    padding-bottom: 25px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border);
+}
+
+.planner-heading h2 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(23px, 3vw, 30px);
+    margin-bottom: 10px;
+}
+
+.planner-heading > p:last-child {
+    font-size: 13px;
+}
+
+
+/* FORM SECTIONS */
+.form-group {
+    padding: 24px;
+    margin-bottom: 22px;
+    background: rgba(11, 8, 16, 0.45);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+}
+
+.form-group h3 {
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+.form-group label {
+    display: block;
+    margin: 15px 0 7px;
+    color: var(--gold-light);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.form-group input {
+    display: block;
+    width: 100%;
+    min-height: 47px;
+    padding: 12px 14px;
+    color: var(--white);
+    background: var(--bg-dark);
+    border: 1px solid rgba(193, 138, 240, 0.3);
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.form-group input::placeholder {
+    color: var(--muted);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--purple-light);
+    box-shadow: 0 0 0 3px rgba(135, 57, 201, 0.15);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+
+/* RESOURCE RULES */
+.rules-box {
+    padding: 24px;
+    margin: 25px 0;
+    background: rgba(11, 8, 16, 0.65);
+    border: 1px solid rgba(197, 166, 106, 0.4);
+    border-left: 4px solid var(--gold);
+    border-radius: 8px;
+}
+
+.rules-box h3 {
+    margin-bottom: 10px;
+    color: var(--gold-light);
+}
+
+.rules-box p {
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.rules-box ul {
+    padding-left: 22px;
+}
+
+.rules-box li {
+    color: var(--text);
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+.rules-box li strong {
+    color: var(--gold-light);
+}
+
+
+/* FORM BUTTONS */
+.form-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 28px;
+}
+
+.form-buttons button {
+    flex: 1;
+    min-height: 48px;
+}
+
+
+/* CALCULATION RESULTS */
+.result-box {
+    margin-top: 35px;
+    padding: 30px;
+    background: #171020;
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+}
+
+.result-box[hidden] {
+    display: none !important;
+}
+
+.result-box h2 {
+    color: var(--gold-light);
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 23px;
+    margin-bottom: 18px;
+}
+
+.result-box > p {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.resource-result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 18px;
+    margin-top: 12px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    color: var(--text);
+}
+
+.resource-result-item span:last-child {
+    color: var(--gold-light);
+    font-weight: 700;
+}
+
+.result-note {
+    margin-top: 20px;
+    font-size: 12px !important;
+    color: var(--muted);
+}
+
+
+/* FOOTER */
 .site-footer {
-    background-color: #08050e;
-    border-top: 1px solid #392052;
-    padding: 25px 0;
+    padding: 25px 15px;
+    background: var(--bg-dark);
+    border-top: 1px solid var(--border);
     text-align: center;
 }
 
 .site-footer p {
-    color: #9b8aaa;
-    font-size: 13px;
-    margin: 5px 0;
+    color: var(--muted);
+    font-size: 12px;
+    margin: 4px 0;
 }
 
 
-/* 8. RESPONSIVE DESIGN - TABLETS */
+/* TABLET RESPONSIVENESS */
+@media (max-width: 768px) {
 
-@media screen and (max-width: 768px) {
+    .site-header .container {
+        min-height: 70px;
+    }
 
     .hero {
-        padding: 65px 0;
+        padding: 60px 0;
     }
 
     .hero-content {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        gap: 35px;
         text-align: center;
-        gap: 40px;
     }
 
-    .hero-text h1 {
-        font-size: 36px;
+    .hero-text {
+        text-align: center;
     }
 
     .hero-description {
@@ -323,335 +607,88 @@ body {
     }
 
     .hero-image img {
-        max-width: 350px;
-        height: 350px;
+        max-width: 340px;
+        height: 400px;
     }
 
-    .founder-section,
-    .business-section {
-        padding: 65px 0;
+    .profile-details {
+        grid-template-columns: 1fr;
+    }
+
+    .planner-card {
+        padding: 28px;
     }
 
 }
 
 
-/* 9. RESPONSIVE DESIGN - MOBILE */
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 480px) {
 
-@media screen and (max-width: 480px) {
+    .container {
+        width: calc(100% - 32px);
+    }
 
     .site-header .container {
         flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        padding: 12px 0;
     }
 
     .logo {
-        font-size: 24px;
+        font-size: 21px;
     }
 
     .navbar {
-        gap: 20px;
+        gap: 24px;
     }
 
     .navbar a {
-        font-size: 13px;
+        font-size: 10px;
+    }
+
+    .hero {
+        padding: 45px 0;
     }
 
     .hero-text h1 {
         font-size: 29px;
     }
 
-    .hero-description {
-        font-size: 14px;
-    }
-
     .hero-image img {
-        height: 280px;
+        max-width: 280px;
+        height: 340px;
     }
 
-    .founder-section h2,
-    .business-section h2 {
-        font-size: 27px;
+    .founder-section,
+    .business-section {
+        padding: 50px 0;
     }
 
     .founder-card {
-        padding: 25px 18px;
+        padding: 24px 20px;
     }
 
     .founder-card h3 {
         font-size: 20px;
     }
 
-    .profile-details {
-        padding: 15px;
+    .kiosk-hero {
+        padding: 42px 0;
     }
-
-    .btn-primary {
-        padding: 12px 20px;
-        font-size: 14px;
-    }
-
-}
-
-
-/* =========================================
-   EVILNEST - RESOURCE PLANNER PAGE
-========================================= */
-
-
-/* KIOSK HERO SECTION */
-
-.kiosk-hero {
-    padding: 65px 0;
-    text-align: center;
-    background: radial-gradient(
-        circle at top,
-        #351653,
-        #160d24 65%,
-        #0b0713
-    );
-}
-
-.kiosk-hero h1 {
-    font-size: 42px;
-    color: #ffffff;
-    margin-bottom: 15px;
-}
-
-.kiosk-hero p:last-child {
-    color: #c4b5d4;
-    max-width: 650px;
-    margin: 0 auto;
-}
-
-
-/* PLANNER SECTION */
-
-.planner-section {
-    padding: 70px 0;
-    background-color: #0b0713;
-}
-
-.planner-card {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px;
-    background-color: #1b1029;
-    border: 1px solid #4c2670;
-    border-radius: 18px;
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
-}
-
-.planner-heading {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.planner-heading h2 {
-    font-size: 28px;
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
-.planner-heading p:last-child {
-    color: #bcaecb;
-}
-
-
-/* FORM GROUPS */
-
-.form-group {
-    margin-bottom: 35px;
-}
-
-.form-group h3 {
-    color: #d8b4fe;
-    font-size: 20px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #4c2670;
-    padding-bottom: 10px;
-}
-
-.form-group label {
-    display: block;
-    color: #e9d5ff;
-    font-weight: 600;
-    margin: 18px 0 8px;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #593578;
-    border-radius: 8px;
-    background-color: #120b20;
-    color: #ffffff;
-    font-size: 15px;
-    outline: none;
-    transition: 0.3s;
-}
-
-.form-group input::placeholder {
-    color: #857394;
-}
-
-.form-group input:focus {
-    border-color: #c084fc;
-    box-shadow: 0 0 10px rgba(168, 85, 247, 0.25);
-}
-
-.form-group small {
-    display: block;
-    color: #a99bb9;
-    margin-top: 6px;
-}
-
-
-/* CALCULATION RULES */
-
-.rules-box {
-    background-color: #120b20;
-    border: 1px solid #593578;
-    border-left: 4px solid #a855f7;
-    border-radius: 10px;
-    padding: 25px;
-    margin-bottom: 30px;
-}
-
-.rules-box h3 {
-    color: #d8b4fe;
-    margin-bottom: 12px;
-}
-
-.rules-box p {
-    color: #c4b5d4;
-    margin-bottom: 12px;
-}
-
-.rules-box ul {
-    padding-left: 25px;
-}
-
-.rules-box li {
-    color: #d1c5df;
-    margin-bottom: 9px;
-}
-
-.rules-box strong {
-    color: #c084fc;
-}
-
-
-/* FORM BUTTONS */
-
-.form-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.form-buttons button {
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 15px;
-}
-
-.btn-secondary {
-    background-color: #30203f;
-    color: #ffffff;
-    padding: 14px 28px;
-    border: 1px solid #71429b !important;
-    border-radius: 8px;
-    font-weight: 700;
-    transition: 0.3s;
-}
-
-.btn-secondary:hover {
-    background-color: #4c2670;
-}
-
-
-/* RESULT SECTION */
-
-.result-box {
-    margin-top: 40px;
-    padding: 30px;
-    background-color: #120b20;
-    border: 1px solid #9333ea;
-    border-radius: 15px;
-}
-
-.result-box h2 {
-    color: #d8b4fe;
-    margin-bottom: 20px;
-}
-
-.result-box > p {
-    color: #d1c5df;
-    margin-bottom: 10px;
-}
-
-#resourceResults {
-    margin-top: 25px;
-}
-
-.resource-result-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    padding: 15px;
-    margin-bottom: 12px;
-    background-color: #241333;
-    border-radius: 8px;
-    border-left: 3px solid #a855f7;
-}
-
-.resource-result-item span:first-child {
-    color: #e9d5ff;
-}
-
-.resource-result-item span:last-child {
-    color: #c084fc;
-    font-weight: 700;
-}
-
-.result-note {
-    margin-top: 20px;
-    font-size: 13px;
-    color: #a99bb9;
-}
-
-
-/* MOBILE RESPONSIVE */
-
-@media screen and (max-width: 768px) {
-
-    .planner-card {
-        padding: 25px;
-    }
-
-    .kiosk-hero h1 {
-        font-size: 34px;
-    }
-
-    .planner-heading h2 {
-        font-size: 24px;
-    }
-
-}
-
-@media screen and (max-width: 480px) {
 
     .planner-section {
-        padding: 40px 0;
+        padding: 40px 0 55px;
     }
 
     .planner-card {
-        padding: 20px 15px;
+        padding: 22px 16px;
     }
 
-    .kiosk-hero h1 {
-        font-size: 29px;
+    .form-group,
+    .rules-box {
+        padding: 18px 14px;
     }
 
     .form-buttons {
@@ -662,10 +699,26 @@ body {
         width: 100%;
     }
 
+    .result-box {
+        padding: 22px 15px;
+    }
+
     .resource-result-item {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 5px;
+        font-size: 13px;
+    }
+
+}
+
+
+/* ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
     }
 
 }
