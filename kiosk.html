@@ -12,115 +12,87 @@
 
     <!-- External JavaScript -->
     <script src="js/script.js" defer></script>
+
 </head>
 
 <body>
 
     <!-- Website Header -->
     <header class="site-header">
-
         <div class="container">
-
             <div class="logo">
                 <span>EVIL</span>NEST
             </div>
 
             <!-- Navigation Menu -->
             <nav class="navbar">
-                <a href="index.html">Founder</a>
-                <a href="kiosk.html" class="active">
-                    Resource Planner
-                </a>
+                <a href="index.html">My Profile</a>
+                <a href="kiosk.html" class="active">Resource Planner</a>
             </nav>
-
         </div>
-
     </header>
-
 
     <!-- Main Content -->
     <main>
 
-        <!-- Page Introduction -->
+        <!-- Resource Planner Introduction -->
         <section class="kiosk-hero">
-
             <div class="container">
-
-                <p class="subtitle">EVILNEST HEADQUARTERS</p>
-
-                <h1>Resource Planner</h1>
-
+                <p class="subtitle">EVILNEST SERVICES</p>
+                <h1>Supervillain Resource Planner</h1>
                 <p>
-                    Prepare your secret headquarters for your next
-                    mission. Enter your requirements and let EvilNest
-                    calculate the resources you need.
+                    Plan your headquarters efficiently by calculating
+                    the resources required based on the number of
+                    supervillains and rental duration.
                 </p>
-
             </div>
-
         </section>
-
 
         <!-- Resource Planner Form -->
         <section class="planner-section">
-
             <div class="container">
-
                 <div class="planner-card">
-
                     <div class="planner-heading">
-
-                        <p class="subtitle">PLAN YOUR LAIR</p>
-
-                        <h2>Calculate Your Resources</h2>
-
+                        <p class="subtitle">RESOURCE MANAGEMENT</p>
+                        <h2>Plan Your Lair</h2>
                         <p>
-                            Complete the form below to estimate
-                            the supplies required for your stay.
+                            Enter your details below to calculate
+                            the resources required for your stay.
                         </p>
-
                     </div>
 
+        <!-- Customer Form -->
+        <form id="resourceForm" novalidate>
+            <div class="form-group">
+                <h3>Customer Information</h3>
+                <label for="customerName">
+                    Customer Name
+                </label>
 
-                    <!-- Customer Form -->
-                    <form id="resourceForm" novalidate>
+                <input
+                    type="text"
+                    id="customerName"
+                    name="customerName"
+                    placeholder="Enter your full name"
+                    required
+                >
 
-                        <!-- Customer Information -->
+                <label for="customerEmail">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="customerEmail"
+                    name="customerEmail"
+                    placeholder="example@email.com"
+                    required
+                >
+            </div>
+
                         <div class="form-group">
 
-                            <h3>01. Customer Information</h3>
-
-                            <label for="customerName">
-                                Customer Name
-                            </label>
-
-                            <input
-                                type="text"
-                                id="customerName"
-                                name="customerName"
-                                placeholder="Enter your full name"
-                                required
-                            >
-
-                            <label for="customerEmail">
-                                Email Address
-                            </label>
-
-                            <input
-                                type="email"
-                                id="customerEmail"
-                                name="customerEmail"
-                                placeholder="example@email.com"
-                                required
-                            >
-
-                        </div>
-
-
-                        <!-- Lair Requirements -->
-                        <div class="form-group">
-
-                            <h3>02. Lair Requirements</h3>
+                            <h3>Rental Information</h3>
 
                             <label for="users">
                                 Number of Supervillains
@@ -130,17 +102,16 @@
                                 type="number"
                                 id="users"
                                 name="users"
+                                placeholder="Enter number of occupants"
                                 min="1"
                                 max="100"
                                 step="1"
-                                placeholder="Enter number of occupants"
                                 required
                             >
 
                             <small>
                                 Minimum: 1 person | Maximum: 100 people
                             </small>
-
 
                             <label for="days">
                                 Rental Duration (Days)
@@ -150,10 +121,10 @@
                                 type="number"
                                 id="days"
                                 name="days"
+                                placeholder="Enter rental duration"
                                 min="1"
                                 max="365"
                                 step="1"
-                                placeholder="Enter number of days"
                                 required
                             >
 
@@ -163,18 +134,18 @@
 
                         </div>
 
-
-                        <!-- Calculation Rules -->
+                        <!-- Resource Calculation Rules -->
                         <div class="rules-box">
 
                             <h3>Resource Calculation Rules</h3>
 
                             <p>
-                                Our system uses the following
-                                fictional resource requirements:
+                                The Resource Planner uses the following
+                                rules to estimate the required supplies:
                             </p>
 
                             <ul>
+
                                 <li>
                                     <strong>Food:</strong>
                                     3 meals per person per day
@@ -199,25 +170,23 @@
                                     <strong>Sleeping Pods:</strong>
                                     1 pod per person
                                 </li>
+
                             </ul>
 
                         </div>
-
 
                         <!-- Form Buttons -->
                         <div class="form-buttons">
 
                             <button
                                 type="submit"
-                                class="btn-primary"
-                            >
+                                class="btn-primary">
                                 Calculate Resources
                             </button>
 
                             <button
                                 type="reset"
-                                class="btn-secondary"
-                            >
+                                class="btn-secondary">
                                 Reset Form
                             </button>
 
@@ -225,18 +194,14 @@
 
                     </form>
 
-
-                    <!-- Calculation Result -->
+                    <!-- Calculation Results -->
                     <section
                         id="result"
                         class="result-box"
                         aria-live="polite"
-                        hidden
-                    >
+                        hidden>
 
-                        <p class="subtitle">CALCULATION COMPLETE</p>
-
-                        <h2>Your Lair Resource Summary</h2>
+                        <h2>Resource Calculation Results</h2>
 
                         <p id="resultCustomer"></p>
 
@@ -244,15 +209,11 @@
 
                         <p id="resultDuration"></p>
 
-                        <div id="resourceResults">
-
-                            <!-- JavaScript will display results here -->
-
-                        </div>
+                        <div id="resourceResults"></div>
 
                         <p class="result-note">
-                            These resources are estimated based
-                            on the requirements provided.
+                            These results are estimated according to
+                            the EvilNest resource calculation rules.
                         </p>
 
                     </section>
@@ -265,7 +226,6 @@
 
     </main>
 
-
     <!-- Website Footer -->
     <footer class="site-footer">
 
@@ -276,7 +236,7 @@
             </p>
 
             <p>
-                Designed by Nurfatin Najwa Binti Ruzaimi
+                Designed by Fatin Ruzaimi
             </p>
 
         </div>
@@ -284,5 +244,4 @@
     </footer>
 
 </body>
-
 </html>
